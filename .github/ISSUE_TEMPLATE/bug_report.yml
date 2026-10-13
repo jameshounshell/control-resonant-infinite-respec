@@ -1,0 +1,75 @@
+name: Bug report
+description: Something doesn't work. The full log is required.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports without the complete, unedited `ControlInfiniteRespec.log` will be closed.
+        The log holds no paths or account names, so you can paste it as-is.
+
+        **How to get a useful log**
+        1. Start the game and load your save.
+        2. Open the respec screen that has the problem and try the respec.
+        3. Quit the game, then open `CONTROL Resonant\crmods\ControlInfiniteRespec.log`.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you post
+      options:
+        - label: I'm on the latest release of this mod.
+          required: true
+        - label: I read the Install section of the README, including the Proton launch option if I'm on Linux or Steam Deck.
+          required: true
+        - label: I searched existing issues for the same problem.
+          required: true
+
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Respec screen
+      options:
+        - Talents
+        - Aberrant Abilities (primary, secondary, finisher)
+        - Combat Abilities (flame power, turrets, ...)
+        - More than one screen
+        - None, the problem happens at game start
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what the game did instead. Include your Respec Item count before and after if it changed.
+      placeholder: |
+        Pressed Reset All on Talents with 3 Respec Items. Expected 3 afterwards, had 2.
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: ControlInfiniteRespec.log
+      description: Paste all of ControlInfiniteRespec.log, from the first line to the last. Don't trim it.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: crloader-log
+    attributes:
+      label: crloader.log
+      description: Paste all of crloader.log, from the game folder next to `winmm.dll`.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: other-mods
+    attributes:
+      label: Other mods
+      description: Every other mod you have installed, or "none".
+    validations:
+      required: true
